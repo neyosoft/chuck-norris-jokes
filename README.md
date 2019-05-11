@@ -1,6 +1,6 @@
 # Chuck Norris Jokes
 
-Create and use random chuch norris jokes in your PHP application.
+Create and use random chuck norris jokes in your PHP application.
 
 ## Installation
 
@@ -12,7 +12,7 @@ composer require neyosoft/chuck-norris-jokes
 
 ## Usage
 
-```python
+```php
 use Neyosoft\ChuckNorrisJoke\Factories\JokeFactory;
 
 $jokes = new JokeFactory();
