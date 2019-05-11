@@ -8,17 +8,18 @@ use PHPUnit\Framework\TestCase;
 class JokeFactoryTest extends TestCase
 {
     /** @test */
-    function it_returns_random_joke()
+    public function it_returns_random_joke()
     {
         $jokes = new JokeFactory(['The first joke of the year']);
 
         $joke = $jokes->getRandom();
 
-        $this->assertSame($joke, "The first joke of the year");
+        $this->assertSame($joke, 'The first joke of the year');
     }
 
     /** @test */
-    public function get_all_jokes(){
+    public function get_all_jokes()
+    {
         $some_jokes = ['Joke one', 'Second joke', 'last joke'];
 
         $jokes = new JokeFactory($some_jokes);
@@ -29,8 +30,9 @@ class JokeFactoryTest extends TestCase
     }
 
     /** @test */
-    public function joke_can_be_added(){
-        $new_joke = "Some funny joke";
+    public function joke_can_be_added()
+    {
+        $new_joke = 'Some funny joke';
 
         $jokes = new JokeFactory();
 

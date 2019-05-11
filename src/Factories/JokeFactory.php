@@ -7,14 +7,15 @@ class JokeFactory
     /** @var array */
     protected $jokes;
 
-    public function __construct(array $jokes = null){
-        if(is_null($jokes)){
+    public function __construct(array $jokes = null)
+    {
+        if (is_null($jokes)) {
             $this->jokes = [
                 'Chuck Norris counted to infinity. Twice.',
-                "Chuck Norris is the reason Waldo is hiding.",
-                "Chuck Norris is the only person that can punch a cyclops between the eye."
+                'Chuck Norris is the reason Waldo is hiding.',
+                'Chuck Norris is the only person that can punch a cyclops between the eye.',
             ];
-        }else{
+        } else {
             $this->jokes = $jokes;
         }
     }
@@ -23,12 +24,14 @@ class JokeFactory
     {
         return $this->jokes[array_rand($this->jokes)];
     }
-    
-    public function all(){
+
+    public function all()
+    {
         return $this->jokes;
     }
 
-    public function add($joke){
+    public function add($joke)
+    {
         $this->jokes[] = $joke;
     }
 }
