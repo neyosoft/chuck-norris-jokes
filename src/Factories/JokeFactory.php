@@ -12,7 +12,7 @@ class JokeFactory
     /** @var \GuzzleHttp\Client */
     protected $client;
 
-    const JOKE_API = "http://api.icndb.com/jokes/random";
+    const JOKE_API = 'http://api.icndb.com/jokes/random';
 
     public function __construct(Client $client = null)
     {
