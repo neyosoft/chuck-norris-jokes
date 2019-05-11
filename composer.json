@@ -1,6 +1,6 @@
 {
 	"name": "neyosoft/chuck-norris-jokes",
-	"description": "Hands our different chuck norris jokes",
+	"description": "Hands out different chuck norris jokes",
 	"type": "library",
 	"license": "MIT",
 	"authors": [
