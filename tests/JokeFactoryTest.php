@@ -36,6 +36,6 @@ class JokeFactoryTest extends TestCase
 
         $jokes->add($new_joke);
 
-        $this->assertSame($new_joke, $jokes->getRandom());
+        $this->assertContains($new_joke, $jokes->all());
     }
 }
