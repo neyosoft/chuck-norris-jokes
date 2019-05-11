@@ -8,5 +8,10 @@ php:
 before_script:
   - travis_retry composer update
 
+event:
+  matrix:
+    - COMPOSER_FLAGS="--prefer-lowest
+    - COMPOSER_FLAGS=""
+
 script:
   - vendor/bin/phpunit
