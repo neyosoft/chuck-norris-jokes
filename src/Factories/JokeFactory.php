@@ -2,27 +2,30 @@
 
 namespace Neyosoft\ChuckNorrisJoke\Factories;
 
+use GuzzleHttp\Client;
+
 class JokeFactory
 {
     /** @var array */
     protected $jokes;
 
-    public function __construct(array $jokes = null)
+    /** @var \GuzzleHttp\Client */
+    protected $client;
+
+    const JOKE_API = "http://api.icndb.com/jokes/random";
+
+    public function __construct(Client $client = null)
     {
-        if (is_null($jokes)) {
-            $this->jokes = [
-                'Chuck Norris counted to infinity. Twice.',
-                'Chuck Norris is the reason Waldo is hiding.',
-                'Chuck Norris is the only person that can punch a cyclops between the eye.',
-            ];
-        } else {
-            $this->jokes = $jokes;
-        }
+        $this->client = $client ?: new Client();
     }
 
     public function getRandom()
     {
-        return $this->jokes[array_rand($this->jokes)];
+        $response = $this->client->get(static::JOKE_API);
+
+        $content = json_decode($response->getBody()->getContents());
+
+        return $content->value->joke;
     }
 
     public function all()

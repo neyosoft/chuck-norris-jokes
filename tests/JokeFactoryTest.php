@@ -2,31 +2,30 @@
 
 namespace Neyosoft\ChuckNorrisJoke\Tests;
 
-use Neyosoft\ChuckNorrisJoke\Factories\JokeFactory;
+use GuzzleHttp\Client;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
+use GuzzleHttp\Handler\MockHandler;
+use Neyosoft\ChuckNorrisJoke\Factories\JokeFactory;
 
 class JokeFactoryTest extends TestCase
 {
     /** @test */
     public function it_returns_random_joke()
     {
-        $jokes = new JokeFactory(['The first joke of the year']);
+        $mock = new MockHandler([
+            new Response(200, [], '{ "type": "success", "value": { "id": 204, "joke": "Nagasaki never had a bomb dropped on it. Chuck Norris jumped out of a plane and punched the ground", "categories": [] } }')
+        ]);
+
+        $handler = HandlerStack::create($mock);
+        $client = new Client(['handler' => $handler]);
+
+        $jokes = new JokeFactory($client);
 
         $joke = $jokes->getRandom();
 
-        $this->assertSame($joke, 'The first joke of the year');
-    }
-
-    /** @test */
-    public function get_all_jokes()
-    {
-        $some_jokes = ['Joke one', 'Second joke', 'last joke'];
-
-        $jokes = new JokeFactory($some_jokes);
-
-        $all_jokes = $jokes->all();
-
-        self::assertSame($all_jokes, $some_jokes);
+        $this->assertSame($joke, "Nagasaki never had a bomb dropped on it. Chuck Norris jumped out of a plane and punched the ground");
     }
 
     /** @test */
