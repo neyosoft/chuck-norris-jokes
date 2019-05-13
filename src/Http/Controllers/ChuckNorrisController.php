@@ -12,6 +12,9 @@ use Neyosoft\ChuckNorrisJoke\Facades\ChuckNorris;
 class ChuckNorrisController
 {
     public function __invoke(){
-        return ChuckNorris::getRandom();
+
+        return view("chuck-norris::joke", [
+            "joke" => ChuckNorris::getRandom()
+        ]);
     }
 }
