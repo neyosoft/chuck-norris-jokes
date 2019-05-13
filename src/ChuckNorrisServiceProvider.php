@@ -30,12 +30,14 @@ class ChuckNorrisServiceProvider extends ServiceProvider
             __DIR__.'/../config/chuck-norris.php' => config_path('chuck-norris.php'),
         ], 'config');
 
-        if(! class_exists("CreateJokesTable")){
-            $this->publishes([
-                __DIR__.'/../database/migrations/create_jokes_table.php.stub' =>
-                    database_path('migrations/' . date('Y_m_d_H_i_s', time()) . '_create_jokes_table.php'),
-            ], 'migrations');
-        }
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+
+//        if(! class_exists("CreateJokesTable")){
+//            $this->publishes([
+//                __DIR__.'/../database/migrations/create_jokes_table.php.stub' =>
+//                    database_path('migrations/' . date('Y_m_d_H_i_s', time()) . '_create_jokes_table.php'),
+//            ], 'migrations');
+//        }
 
         Route::get(config('chuck-norris.route'), ChuckNorrisController::class);
     }
