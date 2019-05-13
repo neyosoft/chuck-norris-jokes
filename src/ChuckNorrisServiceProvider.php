@@ -8,8 +8,8 @@ namespace Neyosoft\ChuckNorrisJoke;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Neyosoft\ChuckNorrisJoke\Factories\JokeFactory;
 use Neyosoft\ChuckNorrisJoke\Console\ChuckNorrisJoke;
+use Neyosoft\ChuckNorrisJoke\Factories\JokeFactory;
 use Neyosoft\ChuckNorrisJoke\Http\Controllers\ChuckNorrisController;
 
 class ChuckNorrisServiceProvider extends ServiceProvider
@@ -39,6 +39,6 @@ class ChuckNorrisServiceProvider extends ServiceProvider
             return new JokeFactory();
         });
 
-        $this->mergeConfigFrom(__DIR__ . "/../config/chuck-norris.php", "chuck-norris");
+        $this->mergeConfigFrom(__DIR__.'/../config/chuck-norris.php', 'chuck-norris');
     }
 }
