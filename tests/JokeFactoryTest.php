@@ -3,11 +3,11 @@
 namespace Neyosoft\ChuckNorrisJoke\Tests;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use PHPUnit\Framework\TestCase;
-use GuzzleHttp\Handler\MockHandler;
 use Neyosoft\ChuckNorrisJoke\Factories\JokeFactory;
+use PHPUnit\Framework\TestCase;
 
 class JokeFactoryTest extends TestCase
 {
@@ -15,7 +15,7 @@ class JokeFactoryTest extends TestCase
     public function it_returns_random_joke()
     {
         $mock = new MockHandler([
-            new Response(200, [], '{ "type": "success", "value": { "id": 204, "joke": "Nagasaki never had a bomb dropped on it. Chuck Norris jumped out of a plane and punched the ground", "categories": [] } }')
+            new Response(200, [], '{ "type": "success", "value": { "id": 204, "joke": "Nagasaki never had a bomb dropped on it. Chuck Norris jumped out of a plane and punched the ground", "categories": [] } }'),
         ]);
 
         $handler = HandlerStack::create($mock);
@@ -25,7 +25,7 @@ class JokeFactoryTest extends TestCase
 
         $joke = $jokes->getRandom();
 
-        $this->assertSame($joke, "Nagasaki never had a bomb dropped on it. Chuck Norris jumped out of a plane and punched the ground");
+        $this->assertSame($joke, 'Nagasaki never had a bomb dropped on it. Chuck Norris jumped out of a plane and punched the ground');
     }
 
     /** @test */

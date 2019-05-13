@@ -1,11 +1,10 @@
 <?php
 /**
  * Date: 11-May-19
- * Time: 11:12 PM
+ * Time: 11:12 PM.
  */
 
 namespace Neyosoft\ChuckNorrisJoke;
-
 
 use Illuminate\Support\ServiceProvider;
 use Neyosoft\ChuckNorrisJoke\Console\ChuckNorrisJoke;
@@ -17,11 +16,11 @@ class ChuckNorrisServiceProvider extends ServiceProvider
         if($this->app->runningInConsole()){
             $this->commands([ ChuckNorrisJoke::class ]);
         }
-
     }
 
-    public function register(){
-        $this->app->bind('chuck-norris', function(){
+    public function register()
+    {
+        $this->app->bind('chuck-norris', function () {
             return new JokeFactory();
         });
     }
