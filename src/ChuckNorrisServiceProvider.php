@@ -39,7 +39,6 @@ class ChuckNorrisServiceProvider extends ServiceProvider
 //            ], 'migrations');
 //        }
 
-
         Route::get(config('chuck-norris.route'), ChuckNorrisController::class);
     }
 

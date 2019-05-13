@@ -2,10 +2,10 @@
 
 namespace Neyosoft\ChuckNorrisJoke\Tests;
 
+use Neyosoft\ChuckNorrisJoke\ChuckNorrisServiceProvider;
+use Neyosoft\ChuckNorrisJoke\Facades\ChuckNorris;
 use Neyosoft\ChuckNorrisJoke\Models\Joke;
 use Orchestra\Testbench\TestCase;
-use Neyosoft\ChuckNorrisJoke\Facades\ChuckNorris;
-use Neyosoft\ChuckNorrisJoke\ChuckNorrisServiceProvider;
 
 class MigrationTest extends TestCase
 {
@@ -31,7 +31,7 @@ class MigrationTest extends TestCase
     /**
      * Define environment setup.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param \Illuminate\Foundation\Application $app
      *
      * @return void
      */
@@ -41,13 +41,14 @@ class MigrationTest extends TestCase
     }
 
     /** @test */
-    public function can_access_jokes_on_database(){
+    public function can_access_jokes_on_database()
+    {
         $joke = new Joke();
-        $joke->joke = "Let save this funny joke.";
+        $joke->joke = 'Let save this funny joke.';
         $joke->save();
 
         $freshJoke = Joke::find($joke->id);
 
-        $this->assertSame($freshJoke->joke, "Let save this funny joke.");
+        $this->assertSame($freshJoke->joke, 'Let save this funny joke.');
     }
 }
