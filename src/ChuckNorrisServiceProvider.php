@@ -8,11 +8,15 @@ namespace Neyosoft\ChuckNorrisJoke;
 
 
 use Illuminate\Support\ServiceProvider;
+use Neyosoft\ChuckNorrisJoke\Console\ChuckNorrisJoke;
 use Neyosoft\ChuckNorrisJoke\Factories\JokeFactory;
 
 class ChuckNorrisServiceProvider extends ServiceProvider
 {
     public function boot(){
+        if($this->app->runningInConsole()){
+            $this->commands([ ChuckNorrisJoke::class ]);
+        }
 
     }
 
