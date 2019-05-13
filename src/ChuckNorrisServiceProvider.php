@@ -8,8 +8,8 @@ namespace Neyosoft\ChuckNorrisJoke;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Neyosoft\ChuckNorrisJoke\Console\ChuckNorrisJoke;
 use Neyosoft\ChuckNorrisJoke\Factories\JokeFactory;
+use Neyosoft\ChuckNorrisJoke\Console\ChuckNorrisJoke;
 use Neyosoft\ChuckNorrisJoke\Http\Controllers\ChuckNorrisController;
 
 class ChuckNorrisServiceProvider extends ServiceProvider
@@ -31,14 +31,6 @@ class ChuckNorrisServiceProvider extends ServiceProvider
         ], 'config');
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-
-//        if(! class_exists("CreateJokesTable")){
-//            $this->publishes([
-//                __DIR__.'/../database/migrations/create_jokes_table.php.stub' =>
-//                    database_path('migrations/' . date('Y_m_d_H_i_s', time()) . '_create_jokes_table.php'),
-//            ], 'migrations');
-//        }
-
 
         Route::get(config('chuck-norris.route'), ChuckNorrisController::class);
     }
