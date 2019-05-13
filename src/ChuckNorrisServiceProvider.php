@@ -26,7 +26,6 @@ class ChuckNorrisServiceProvider extends ServiceProvider
             __DIR__.'/../resources/views' => resource_path('views/vendor/chuck-norris'),
         ], 'views');
 
-
         $this->publishes([
             __DIR__.'/../config/chuck-norris.php' => config_path('chuck-norris.php'),
         ], 'config');
