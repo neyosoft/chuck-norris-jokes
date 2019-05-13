@@ -20,7 +20,7 @@ class ChuckNorrisServiceProvider extends ServiceProvider
             $this->commands([ChuckNorrisJoke::class]);
         }
 
-        Route::get("/chuck-norris", ChuckNorrisController::class);
+        Route::get('/chuck-norris', ChuckNorrisController::class);
     }
 
     public function register()
