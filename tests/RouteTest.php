@@ -29,6 +29,8 @@ class RouteTest extends \Orchestra\Testbench\TestCase
             ->andReturn('random post from the route');
 
         $this->get('/chuck-norris')
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertViewIs('chuck-norris::joke')
+            ->assertViewHas('joke', 'random post from the route');
     }
 }
