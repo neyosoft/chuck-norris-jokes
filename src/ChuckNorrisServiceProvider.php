@@ -26,7 +26,6 @@ class ChuckNorrisServiceProvider extends ServiceProvider
             __DIR__.'/../resources/views' => resource_path('views/vendor/chuck-norris'),
         ], 'views');
 
-
         $this->publishes([
             __DIR__.'/../config/chuck-norris.blade.php' => config_path('chuck-norris.blade.php'),
         ], 'config');
@@ -40,6 +39,6 @@ class ChuckNorrisServiceProvider extends ServiceProvider
             return new JokeFactory();
         });
 
-        $this->mergeConfigFrom(__DIR__ . "/../config/chuck-norris.blade.php", "chuck-norris");
+        $this->mergeConfigFrom(__DIR__.'/../config/chuck-norris.blade.php', 'chuck-norris');
     }
 }
