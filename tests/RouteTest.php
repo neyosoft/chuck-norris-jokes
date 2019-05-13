@@ -22,7 +22,6 @@ class RouteTest extends \Orchestra\Testbench\TestCase
     }
 
     /** @test */
-
     public function route_can_be_accessed()
     {
         ChuckNorris::shouldReceive('getRandom')
