@@ -6,9 +6,11 @@
 
 namespace Neyosoft\ChuckNorrisJoke;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Neyosoft\ChuckNorrisJoke\Console\ChuckNorrisJoke;
 use Neyosoft\ChuckNorrisJoke\Factories\JokeFactory;
+use Neyosoft\ChuckNorrisJoke\Http\Controllers\ChuckNorrisController;
 
 class ChuckNorrisServiceProvider extends ServiceProvider
 {
@@ -16,6 +18,8 @@ class ChuckNorrisServiceProvider extends ServiceProvider
         if($this->app->runningInConsole()){
             $this->commands([ ChuckNorrisJoke::class ]);
         }
+
+        Route::get("/chuck-norris", ChuckNorrisController::class);
     }
 
     public function register()
