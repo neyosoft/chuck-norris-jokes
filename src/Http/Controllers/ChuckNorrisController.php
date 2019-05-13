@@ -1,11 +1,10 @@
 <?php
 /**
  * Date: 13-May-19
- * Time: 11:27 AM
+ * Time: 11:27 AM.
  */
 
 namespace Neyosoft\ChuckNorrisJoke\Http\Controllers;
-
 
 use Neyosoft\ChuckNorrisJoke\Facades\ChuckNorris;
 
